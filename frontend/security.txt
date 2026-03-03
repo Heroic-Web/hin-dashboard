@@ -1,0 +1,12 @@
+Contact: mailto:security@hin.com
+Contact: https://github.com/Heroic-Web/hin-dashboard/security/advisories/new
+Expires: 2026-10-12T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://hin.com/.well-known/security.txt
+Policy: https://github.com/Heroic-Web/hin-dashboard/blob/main/SECURITY.md
+Acknowledgments: https://github.com/Heroic-Web/hin-dashboard/blob/main/SECURITY.md#hall-of-fame
+
+# Our security disclosure policy:
+# If you discover a security vulnerability in hin,
+# please report it responsibly through one of the contact methods above.
+# We take all security reports seriously and will respond promptly.
