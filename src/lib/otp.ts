@@ -65,12 +65,12 @@ export class OTPService {
       });
 
       // Send OTP email
-      const emailResult = await resend.emails.send({
-        from: process.env.RESEND_FROM_EMAIL!,
-        to: email,
-        subject: 'Your Login Code',
-        html: this.generateOTPEmailTemplate(code, user.name || 'User')
-      });
+     const emailResult = await resend.emails.send({
+  from: "onboarding@resend.dev",
+  to: "cs.hintech@gmail.com",
+  subject: 'Your Login Code',
+  html: this.generateOTPEmailTemplate(code, user.name || 'User')
+});
 
       if (emailResult.error) {
         console.error('Failed to send OTP email:', emailResult.error);
