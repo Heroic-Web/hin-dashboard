@@ -65,18 +65,26 @@ export class OTPService {
       });
 
       // Send OTP email
-     const emailResult = await resend.emails.send({
-  from: "onboarding@resend.dev",
-  to: "cs.hintech@gmail.com",
-  subject: 'Your Login Code',
-  html: this.generateOTPEmailTemplate(code, user.name || 'User')
-});
+      if (!process.env.RESEND_API_KEY) {
+        throw new Error("RESEND_API_KEY not configured");
+      }
+
+      if (!process.env.RESEND_FROM_EMAIL) {
+        throw new Error("RESEND_FROM_EMAIL not configured");
+      }
+
+      const emailResult = await resend.emails.send({
+        from: process.env.RESEND_FROM_EMAIL,
+        to: email.toLowerCase(),
+        subject: "Your Login Code",
+        html: this.generateOTPEmailTemplate(code, user.name || "User"),
+      });
 
       if (emailResult.error) {
-        console.error('Failed to send OTP email:', emailResult.error);
+        console.error("Failed to send OTP email:", emailResult.error);
         return {
           success: false,
-          message: 'Failed to send OTP email. Please try again.'
+          message: "Failed to send OTP email. Please try again."
         };
       }
 
